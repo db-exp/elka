@@ -1,0 +1,15 @@
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/nginx/*.json
+    json.keys_under_root: true
+    json.overwrite_keys: false
+    json.add_error_key: true
+
+output.logstash:
+  enabled: true
+  hosts: ["logstash:5044"]
+
+setup.kibana:
+  host: "http://kibana:5601"
